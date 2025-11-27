@@ -2,8 +2,16 @@ import tkinter as tk
 from module_b1 import TextDialog
 from module_b2 import SliderDialog
 
+
+def center_dialog(dialog, parent, width, height):
+    dialog.update_idletasks()
+    x = parent.winfo_x() + (parent.winfo_width() - width) // 2
+    y = parent.winfo_y() + (parent.winfo_height() - height) // 2
+    dialog.geometry(f"{width}x{height}+{x}+{y}")
+
+
 def handle_work1():
-    dialog = TextDialog(root)
+    dialog = TextDialog(root, center_dialog)
     root.wait_window(dialog)
     result = dialog.result
     
@@ -13,7 +21,7 @@ def handle_work1():
         result_label.config(text="(Action canceled)")
 
 def handle_work2():
-    dialog = SliderDialog(root)
+    dialog = SliderDialog(root, center_dialog)
     root.wait_window(dialog)
     result = dialog.result
     

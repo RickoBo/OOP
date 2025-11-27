@@ -1,13 +1,15 @@
 import tkinter as tk
 
+
 class TextDialog(tk.Toplevel):
-    def __init__(self, parent):
+    def __init__(self, parent, center_fn):
         super().__init__(parent)
+        width, height = 300, 150
         self.title("Task 1")
-        self.geometry("300x150")
         self.transient(parent)
         self.grab_set()
-        
+        center_fn(self, parent, width, height)
+
         self.result = None
         
         tk.Label(self, text="Enter any text:").pack(padx=20, pady=10)

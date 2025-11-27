@@ -1,12 +1,14 @@
 import tkinter as tk
 
+
 class SliderDialog(tk.Toplevel):
-    def __init__(self, parent):
+    def __init__(self, parent, center_fn):
         super().__init__(parent)
+        width, height = 350, 200
         self.title("Task 2")
-        self.geometry("350x200")
         self.transient(parent)
         self.grab_set()
+        center_fn(self, parent, width, height)
 
         self.result = None
         self.slider_var = tk.IntVar(value=50)
